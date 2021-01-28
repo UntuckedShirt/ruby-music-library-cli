@@ -3,34 +3,39 @@ class Song
 
         @@all = []
 
-    def self.all
-        @@all = []
-    end
 
-    def intitialize(name)
+
+    def initialize(name, artist=nil)
         @name = name
-        @@all << self
+        @artist = artist
        
     end 
 
-    def name
-        name 
+    def artist
+        @artist
+
     end
 
-    def name=(song_name)
-        song_name = name
+    def artist=(artist)
+        @artist = artist
+    end
+
+    def self.all
+        @@all
     end
 
     def self.destroy_all
-        self.all
+        @@all = []
     end
 
     def save 
-        self.save.all
+        @@all << self
     end
 
-    def self.create
-        self.create
+    def self.create(song_name)
+        new_song = self.new(song_name)
+        new_song.save
+        new_song
     end
-
+    
 end
